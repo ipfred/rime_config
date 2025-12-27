@@ -2,7 +2,8 @@
 
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/amzxyz/rime_wanxiang)
 [![GitHub Stars](https://img.shields.io/github/stars/amzxyz/rime_wanxiang?style=social)](https://github.com/amzxyz/rime_wanxiang/stargazers)
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![release](https://img.shields.io/github/v/release/amzxyz/rime_wanxiang?color=brightgreen)](https://github.com/amzxyz/rime_wanxiang/releases)
+
 
 > 🚀 基于深度优化的词库和语法模型的智能拼音输入方案 | 让中文输入行云流水
 
@@ -24,11 +25,31 @@
 
 ---
 
+## 🔀 版本选择
+
+| 特性 | 标准版 | 增强版PRO |
+|-----|-------|----------|
+| **方案文件** | `wanxiang.schema.yaml` | `wanxiang_pro.schema.yaml` |
+| **支持类型** | 全拼、任何双拼 | 只支持双拼 |
+| **自动调频** | ✅ 默认开启 | ❌ 默认关闭 |
+| **用户词记录** | 无差别自动记录 | 需手动造词（``引导） |
+| **用户词位置** | `wanxiang.userdb` | `zc.userdb` |
+| **辅助码** | 基于声调的辅助 | 7种辅助码可选，兼容声调 |
+| **推荐场景** | 日常使用 | 喜欢精准控制、辅助码选字 |
+
+---
+
 ## 🚀 快速开始（30秒上手）
+
+整个rime配置生态都是通的，不了解rime基础的可以参考友情链接，初步了解rime运行的些许特性：
+[oh my rime](https://www.mintimate.cc/zh/guide/installRime.html) 
+[rime参数配置](https://xishansnow.github.io/posts/41ac964d.html)
+
+> 💡 **友情提示：** *如果你是第一次使用万象，可以不要用你过往经验来定义万象，按如下的步骤将万象跑起来后,体验一下万象的功能，然后学习一下万象的各项内容之后再考虑。*
 
 ### 方式一：快速部署 ⚡
 
-1. 将方案文件置于Rime用户目录
+1. 将方案文件 `rime-wanxiang-base.zip`、语法模型 `wanxiang-lts-zh-hans.gram` 置于Rime用户目录
 2. 输入以下指令切换双拼/全拼类型
 3. 重新部署，完成！
 
@@ -44,14 +65,66 @@
 
 > 💡 **提示**：这些指令能一次性完成4个补丁文件的输入类型修改，无需手动配置！
 
-### 方式二：Plum一键安装 🛠️
+### 方式二：plum一键安装 🛠️
 
-#### 基础版（完整）
+安装环境可用plum命令简单安装与更新，在保证安装小狼毫、中州韵、鼠须管等前端的前提下。
+
+<details> 
+<summary><strong>点击展开 / 收起  plum命令安装</strong></summary>
+
+**环境要求**
+
+> ⚠️ **注意**：Windows的PowerShell/CMD不能直接运行东风破，**必须用Git Bash**。
+> macOS / Linux | ✅ 已内置bash
+
+**步骤1：安装Plum**
+
+这是维护在万象仓库plum分支的版本，去掉了默认方案，修改了默认路径。
+
+```bash
+# 打开终端，执行以下命令
+git clone -b plum --depth 1 https://github.com/amzxyz/rime_wanxiang.git
+cd plum
+```
+
+**步骤2：配置用户目录变量**
+
+对于小狼毫、鼠须管、Fcitx5已经默认配置了变量：
+
+```bash
+# 小狼毫
+export rime_frontend='rime/weasel'
+
+# 鼠须管
+export rime_frontend='rime/squirrel'
+
+# Fcitx5
+export rime_frontend='fcitx5/fcitx5-rime'
+```
+
+但对于Linux、Mac使用ibus、fcitx前端需要自己设置变量（可终端执行，最好写入~/.zshrc）：
+
+```bash
+# ibus-rime
+export rime_frontend=rime/ibus-rime
+
+# fcitx-rime
+export rime_frontend=fcitx/fcitx-rime
+```
+
+**步骤3：执行安装命令**
+
+切换到plum目录，执行对应的安装命令即可实现安装和更新。
+</details> 
+
+#### 快速安装
+
+**基础版（完整）**
 ```bash
 bash rime-install amzxyz/rime_wanxiang@wanxiang-base:plum/full
 ```
 
-#### 自然码辅助版（完整）
+**自然码辅助版（完整）**
 ```bash
 bash rime-install amzxyz/rime_wanxiang@wanxiang-zrm-fuzhu:plum/full
 ```
@@ -101,41 +174,164 @@ bash rime-install amzxyz/rime_wanxiang@wanxiang-shouyou-fuzhu:plum/dicts
 
 </details>
 
-### 方式三：更新工具 📲
+### 方式三：脚本工具 👨‍💻
 
 - **Windows**：[wanxiang-tools.exe](https://github.com/amzxyz/RIME-LMDG/releases/tag/tool) - 内置在线更新器
 - **跨平台脚本**：[rime-wanxiang-update-tools](https://github.com/rimeinn/rime-wanxiang-update-tools)
-
----
-
-## 📦 安装方式对比
-
-| 安装方式 | 适合人群 | 难度 | 更新便利性 | 推荐指数 |
-|---------|---------|------|-----------|---------|
-| 快速部署 | 新手体验 | ⭐ | 手动更新 | ⭐⭐⭐ |
-| Plum脚本 | 命令行用户 | ⭐⭐ | 一键更新 | ⭐⭐⭐⭐⭐ |
-| 更新工具 | Windows用户 | ⭐ | 自动更新 | ⭐⭐⭐⭐⭐ |
-| Custom Patch | 长期使用者 | ⭐⭐⭐ | 手动更新 | ⭐⭐⭐⭐ |
-
----
-
-## ⚙️ 版本选择
-
-| 特性 | 标准版 | 增强版PRO |
-|-----|-------|----------|
-| **方案文件** | `wanxiang.schema.yaml` | `wanxiang_pro.schema.yaml` |
-| **支持类型** | 全拼、任何双拼 | 只支持双拼 |
-| **自动调频** | ✅ 默认开启 | ❌ 默认关闭 |
-| **用户词记录** | 无差别自动记录 | 需手动造词（`·`引导） |
-| **用户词位置** | `wanxiang.userdb` | `zc.userdb` |
-| **辅助码** | 基于声调的辅助 | 7种辅助码可选，兼容声调 |
-| **推荐场景** | 日常使用 | 专业用户/追求精准控制 |
-
 ---
 
 ## 🎯 核心功能详解
 
-### 1️⃣ 辅助码系统
+### 1️⃣ Lua扩展功能
+
+万象拼音提供丰富的Lua扩展功能，让输入更高效。
+
+<details>
+<summary>🔧 日期时间快捷输入</summary>
+
+**引导键**：`/` 或 `o`
+
+| 编码 | 功能 | 说明 |
+|-----|------|------|
+| `/sj` 或 `osj` | 时间 | 显示当前时间 |
+| `/rq` 或 `orq` | 日期 | 显示当前日期 |
+| `/rc` 或 `orc` | 日期差 | `/rc26p`（加26天）、`/rc26-`（减26天） |
+| `/nl` 或 `onl` | 农历 | 显示农历日期 |
+| `/xq` 或 `oxq` | 星期 | 显示星期几 |
+| `/ww` 或 `oww` | 周数 | 今年第几周 |
+| `/jq` 或 `ojq` | 节气 | 显示节气信息 |
+| `/dt` 或 `odt` | 日期+时间 | 显示完整日期时间 |
+| `/tt` 或 `ott` | 时间戳 | Unix时间戳 |
+| `/jr` 或 `ojr` | 节日 | 显示节日信息 |
+| `/day` 或 `oday` | 问候模板 | 显示问候语 |
+
+**N模式**：`N0101`（月日）或 `N20250315`（完整年月日）
+
+> 💡 支持自定义格式和顺序，详见方案配置 `wanxiang.schema.yaml` 
+</details>
+
+<details>
+<summary>🔧 计算器模式</summary>
+
+**引导键**：`V`
+
+输入示例：
+- `V3+5` → `8` 和 `3+5=8`
+- 支持 `+ - * / % ^`
+- 支持 `sin(x)` `cos(x)` 等函数
+- 详见 `super_calculator.lua`
+
+![计算器示例](https://storage.deepin.org/thread/202509260127113759_计算器1.png)
+</details>
+
+<details>
+<summary>🔧 超级Tips提示</summary>
+
+化学式：<img src="https://storage.deepin.org/thread/202509260128462735_tips化学式.jpg" height="80">符号：<img src="https://storage.deepin.org/thread/202509260128454675_tips符号.jpg" height="80">表情：<img src="https://storage.deepin.org/thread/202509260128457494_tips表情.jpg" height="80">
+
+**上屏触发键**：逗号 `,`（默认）
+
+支持类型：表情|化学式|翻译|符号|货币|车牌|偏旁部首
+
+**快捷键**：
+- `Ctrl+T` - 开关Tips
+- `,` - 上屏Tips内容
+
+⚠️ **注意**：仓输入法、超越输入法需交由rime处理，设置中关闭前端接管
+输入文字 👉 tips 之间的映射关系 参考配置文件 `lua\tips\tips_show.txt`
+
+</details>
+
+<details>
+<summary>🔧 辅助码提示（仅PRO）</summary>
+
+![辅助码提示示例](https://storage.deepin.org/thread/202509260134283927_辅助码提示.jpg)
+**快捷键**：
+- `Ctrl+A` - 循环切换：辅助码提示 → 声调全拼提示 → 关闭注释
+- `Ctrl+C` - 开启拆分辅助提示（优先级更高）
+
+默认显示1个字的辅助码，可在方案文件中自定义长度。
+
+</details>
+
+<details>
+<summary>🔧 快速符号（快符）</summary>
+
+输入 `a/` 快速上屏"！"符号
+
+可自定义26个字母的映射关系：
+- `repeat` - 重复上一次上屏的内容
+- 修改正则表达式可改变引导策略
+
+配置位置：`quick_symbol_text` 段落
+</details>
+
+<details>
+<summary>🔧 输入码音调显示</summary>
+
+**快捷键**：`Ctrl+S`
+
+实时动态显示全拼并加音调（万象特色功能）
+
+`Shift+Enter` - 上屏当前显示的编码字符串
+</details>
+
+<details>
+<summary>🔧 用户按需造词 中文无感造词（仅PRO）</summary>
+
+**用户按需造词**：``` `` ```
+
+三种造词方式：
+1. ``` `` ``` 起始的主动造词
+2. 编码后双击 ``` `` ``` 的主动造词（后触发）
+3. 次选造词 - 次选是词库组合成的，上屏即记录
+
+**中文无感造词Lua**
+1. 关闭调频情况下，通过`逐步选字选词`的方式上屏将为你记录整段
+2. 遵循用户词管理的逻辑
+3. 直接上屏不造词
+
+> 💡 PRO版讲究自主可控，避免异常词汇污染词库
+</details>
+
+<details>
+<summary>🔧 手动排序</summary>
+
+**快捷键**：
+- `Ctrl+J` - 向左一步
+- `Ctrl+K` - 向右一步
+- `Ctrl+L`（零）- 移除排序信息
+- `Ctrl+P` - 置顶选中候选
+
+支持：
+- 词典候选排序
+- 动态Lua候选排序（日期/时间等格式）
+
+数据存储：`lua/sequence.userdb`
+</details>
+
+<details>
+<summary>🔧 更多Lua功能</summary>
+
+| 功能 | 触发方式 | 说明 |
+|-----|---------|------|
+| 输入统计 | `/rtj` `/ztj` `/ytj` `/ntj` `/tj` | 日/周/月/年/生涯统计 |
+| 翻译模式 | `Ctrl+E` | opencc中英文互译 |
+| 字符集过滤 | `Ctrl+G` | 小字集/大字集切换 |
+| 输入模式切换 | `Ctrl+Q` | 中文/英文/混合编码切换 |
+| 声调辅助回退 | 直接输入7890 | 在声调间快速切换 |
+| 候选切割机 | `Ctrl+1~0` | 上屏首选前N个字 |
+| Tab循环切换 | `Tab` | 循环切换音节 |
+| Unicode | `U` + 编码 | `U62fc` → 拼 |
+| 符号输入 | `/sx` `/yd` 等 | 特殊符号快捷输入 |
+| 错音错字提示 | 自动触发 | `gei yu` → `jǐ yǔ`提示 |
+
+![错音提示示例](https://storage.deepin.org/thread/202509260127525844_错音给予.jpg)
+</details>
+
+---
+
+### 2️⃣ 辅助码系统
 
 万象拼音支持多种辅助码，让你在拼音基础上快速定位目标字。
 
@@ -191,7 +387,7 @@ bash rime-install amzxyz/rime_wanxiang@wanxiang-shouyou-fuzhu:plum/dicts
 
 ---
 
-### 2️⃣ 输入前反查
+### 3️⃣ 输入前反查
 
 <details>
 <summary>📖 拆字模式</summary>
@@ -218,7 +414,7 @@ bash rime-install amzxyz/rime_wanxiang@wanxiang-shouyou-fuzhu:plum/dicts
 
 ---
 
-### 3️⃣ 混合编码
+### 4️⃣ 混合编码
 
 所有混合编码功能统一在 `wanxiang_mixedcode.schema.yaml` 方案中，无需引导，直接输入。
 
@@ -232,155 +428,6 @@ bash rime-install amzxyz/rime_wanxiang@wanxiang-shouyou-fuzhu:plum/dicts
 | Unicode | `U62fc` | 拼 |
 
 ![混合编码示例](https://storage.deepin.org/thread/202509260105536966_混合编码.jpg)
-
----
-
-### 4️⃣ Lua扩展功能
-
-万象拼音提供丰富的Lua扩展功能，让输入更高效。
-
-<details>
-<summary>🔧 日期时间快捷输入</summary>
-
-**引导键**：`/` 或 `o`
-
-| 编码 | 功能 | 说明 |
-|-----|------|------|
-| `/sj` 或 `osj` | 时间 | 显示当前时间 |
-| `/rq` 或 `orq` | 日期 | 显示当前日期 |
-| `/rc` 或 `orc` | 日期差 | `/rc26p`（加26天）、`/rc26-`（减26天） |
-| `/nl` 或 `onl` | 农历 | 显示农历日期 |
-| `/xq` 或 `oxq` | 星期 | 显示星期几 |
-| `/ww` 或 `oww` | 周数 | 今年第几周 |
-| `/jq` 或 `ojq` | 节气 | 显示节气信息 |
-| `/dt` 或 `odt` | 日期+时间 | 显示完整日期时间 |
-| `/tt` 或 `ott` | 时间戳 | Unix时间戳 |
-| `/jr` 或 `ojr` | 节日 | 显示节日信息 |
-| `/day` 或 `oday` | 问候模板 | 显示问候语 |
-
-**N模式**：`N0101`（月日）或 `N20250315`（完整年月日）
-
-> 💡 支持自定义格式和顺序，详见方案配置
-</details>
-
-<details>
-<summary>🔧 计算器模式</summary>
-
-**引导键**：`V`
-
-输入示例：
-- `V3+5` → `8` 和 `3+5=8`
-- 支持 `+ - * / % ^`
-- 支持 `sin(x)` `cos(x)` 等函数
-- 详见 `super_calculator.lua`
-
-![计算器示例](https://storage.deepin.org/thread/202509260127113759_计算器1.png)
-</details>
-
-<details>
-<summary>🔧 超级Tips提示</summary>
-
-**触发键**：逗号 `,`（默认）
-
-支持类型：
-- 表情
-- 化学式
-- 翻译
-- 符号
-- 货币
-- 车牌
-- 偏旁部首
-
-**快捷键**：
-- `Ctrl+T` - 开关Tips
-- `,` - 上屏Tips内容
-
-⚠️ **注意**：仓输入法、超越输入法需交由rime处理，设置中关闭前端接管
-
-![Tips示例](https://storage.deepin.org/thread/202509260128462735_tips化学式.jpg)
-</details>
-
-<details>
-<summary>🔧 辅助码提示（仅PRO）</summary>
-
-**快捷键**：
-- `Ctrl+A` - 循环切换：辅助码提示 → 声调全拼提示 → 关闭注释
-- `Ctrl+C` - 开启拆分辅助提示（优先级更高）
-
-默认显示1个字的辅助码，可在方案文件中自定义长度。
-
-![辅助码提示示例](https://storage.deepin.org/thread/202509260134283927_辅助码提示.jpg)
-</details>
-
-<details>
-<summary>🔧 快速符号（快符）</summary>
-
-输入 `a/` 快速上屏"！"符号
-
-可自定义26个字母的映射关系：
-- `repeat` - 重复上一次上屏的内容
-- 修改正则表达式可改变引导策略
-
-配置位置：`quick_symbol_text` 段落
-</details>
-
-<details>
-<summary>🔧 输入码音调显示</summary>
-
-**快捷键**：`Ctrl+S`
-
-实时动态显示全拼并加音调（万象特色功能）
-
-`Shift+Enter` - 上屏当前显示的编码字符串
-</details>
-
-<details>
-<summary>🔧 用户按需造词（仅PRO）</summary>
-
-**引导键**：`` ` ``
-
-三种造词方式：
-1. `` ` `` 起始的主动造词
-2. 编码后双击 `` ` `` 的主动造词（后触发）
-3. 次选造词 - 次选是词库组合成的，上屏即记录
-
-> 💡 PRO版讲究自主可控，避免异常词汇污染词库
-</details>
-
-<details>
-<summary>🔧 手动排序</summary>
-
-**快捷键**：
-- `Ctrl+J` - 向左一步
-- `Ctrl+K` - 向右一步
-- `Ctrl+L`（零）- 移除排序信息
-- `Ctrl+P` - 置顶选中候选
-
-支持：
-- 词典候选排序
-- 动态Lua候选排序（日期/时间等格式）
-
-数据存储：`lua/sequence.userdb`
-</details>
-
-<details>
-<summary>🔧 更多Lua功能</summary>
-
-| 功能 | 触发方式 | 说明 |
-|-----|---------|------|
-| 输入统计 | `/rtj` `/ztj` `/ytj` `/ntj` `/tj` | 日/周/月/年/生涯统计 |
-| 翻译模式 | `Ctrl+E` | opencc中英文互译 |
-| 字符集过滤 | `Ctrl+G` | 小字集/大字集切换 |
-| 输入模式切换 | `Ctrl+Q` | 中文/英文/混合编码切换 |
-| 声调辅助回退 | 直接输入7890 | 在声调间快速切换 |
-| 候选切割机 | `Ctrl+1~0` | 上屏首选前N个字 |
-| Tab循环切换 | `Tab` | 循环切换音节 |
-| Unicode | `U` + 编码 | `U62fc` → 拼 |
-| 符号输入 | `/sx` `/yd` 等 | 特殊符号快捷输入 |
-| 错音错字提示 | 自动触发 | `gei yu` → `jǐ yǔ`提示 |
-
-![错音提示示例](https://storage.deepin.org/thread/202509260127525844_错音给予.jpg)
-</details>
 
 ---
 
@@ -485,7 +532,7 @@ wanxiang_lookup:
 **原因**：
 - 保持词库纯净可控
 - 避免异常词汇和生僻字自动记录
-- 用户通过 `·` 引导手动造词，更具可控性
+- 用户通过 `` 引导手动造词，更具可控性
 - 适合追求精准的专业用户
 
 **开启方法**：
