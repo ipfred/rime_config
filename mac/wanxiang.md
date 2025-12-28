@@ -42,8 +42,8 @@
 ## 🚀 快速开始（30秒上手）
 
 整个rime配置生态都是通的，不了解rime基础的可以参考友情链接，初步了解rime运行的些许特性：
-[oh my rime](https://www.mintimate.cc/zh/guide/installRime.html) 
-[rime参数配置](https://xishansnow.github.io/posts/41ac964d.html)
+- [oh my rime](https://www.mintimate.cc/zh/guide/installRime.html)
+- [rime参数配置](https://xishansnow.github.io/posts/41ac964d.html)
 
 > 💡 **友情提示：** *如果你是第一次使用万象，可以不要用你过往经验来定义万象，按如下的步骤将万象跑起来后,体验一下万象的功能，然后学习一下万象的各项内容之后再考虑。*
 
@@ -70,7 +70,7 @@
 安装环境可用plum命令简单安装与更新，在保证安装小狼毫、中州韵、鼠须管等前端的前提下。
 
 <details> 
-<summary><strong>点击展开 / 收起  plum命令安装</strong></summary>
+<summary><strong>👇  plum命令安装</strong></summary>
 
 **环境要求**
 
@@ -186,6 +186,7 @@ bash rime-install amzxyz/rime_wanxiang@wanxiang-shouyou-fuzhu:plum/dicts
 
 万象拼音提供丰富的Lua扩展功能，让输入更高效。
 
+#### 日期时间快捷输入
 <details>
 <summary>🔧 日期时间快捷输入</summary>
 
@@ -207,9 +208,13 @@ bash rime-install amzxyz/rime_wanxiang@wanxiang-shouyou-fuzhu:plum/dicts
 
 **N模式**：`N0101`（月日）或 `N20250315`（完整年月日）
 
+<img src="https://storage.deepin.org/thread/202509260107542641_N20250102.jpg" height="80">
+<img src="https://storage.deepin.org/thread/202509260108069991_N0102.jpg" height="80">
+
 > 💡 支持自定义格式和顺序，详见方案配置 `wanxiang.schema.yaml` 
 </details>
 
+#### 计算器模式
 <details>
 <summary>🔧 计算器模式</summary>
 
@@ -224,6 +229,7 @@ bash rime-install amzxyz/rime_wanxiang@wanxiang-shouyou-fuzhu:plum/dicts
 ![计算器示例](https://storage.deepin.org/thread/202509260127113759_计算器1.png)
 </details>
 
+#### 超级Tips提示
 <details>
 <summary>🔧 超级Tips提示</summary>
 
@@ -242,6 +248,18 @@ bash rime-install amzxyz/rime_wanxiang@wanxiang-shouyou-fuzhu:plum/dicts
 
 </details>
 
+#### /引导模式
+<details>
+<summary>🔧 /引导模式</summary>
+
+通过输入 /sx 快捷输入关于“数学”的特殊符号，具体能输入什么可以打开 wanxiang_symbols.yaml学习。以及前述提到的日期、时间等的引导都共用斜杠开头，可以理解为一种命令模式。其中/wx可以查询仓库连接和当前版本  
+
+<img src="https://storage.deepin.org/thread/202509260126183029_符号数学.jpg" height="80">
+<img src="https://storage.deepin.org/thread/202509260126173818_符号大于.jpg" height="80">
+<img src="https://storage.deepin.org/thread/202509260126167252_符号圆点.jpg" height="80">
+</details>
+
+#### 辅助码提示（仅PRO）
 <details>
 <summary>🔧 辅助码提示（仅PRO）</summary>
 
@@ -254,6 +272,7 @@ bash rime-install amzxyz/rime_wanxiang@wanxiang-shouyou-fuzhu:plum/dicts
 
 </details>
 
+#### 快速符号（快符）
 <details>
 <summary>🔧 快速符号（快符）</summary>
 
@@ -266,6 +285,8 @@ bash rime-install amzxyz/rime_wanxiang@wanxiang-shouyou-fuzhu:plum/dicts
 配置位置：`quick_symbol_text` 段落
 </details>
 
+#### 输入码音调显示
+
 <details>
 <summary>🔧 输入码音调显示</summary>
 
@@ -276,6 +297,7 @@ bash rime-install amzxyz/rime_wanxiang@wanxiang-shouyou-fuzhu:plum/dicts
 `Shift+Enter` - 上屏当前显示的编码字符串
 </details>
 
+#### 用户造词
 <details>
 <summary>🔧 用户按需造词 中文无感造词（仅PRO）</summary>
 
@@ -294,6 +316,7 @@ bash rime-install amzxyz/rime_wanxiang@wanxiang-shouyou-fuzhu:plum/dicts
 > 💡 PRO版讲究自主可控，避免异常词汇污染词库
 </details>
 
+#### 手动排序
 <details>
 <summary>🔧 手动排序</summary>
 
@@ -307,7 +330,7 @@ bash rime-install amzxyz/rime_wanxiang@wanxiang-shouyou-fuzhu:plum/dicts
 - 词典候选排序
 - 动态Lua候选排序（日期/时间等格式）
 
-数据存储：`lua/sequence.userdb`
+数据存储：`lua/sequence.userdb`  排序后的数据可以同步 参考 排序信息同步
 </details>
 
 <details>
@@ -430,10 +453,24 @@ bash rime-install amzxyz/rime_wanxiang@wanxiang-shouyou-fuzhu:plum/dicts
 ![混合编码示例](https://storage.deepin.org/thread/202509260105536966_混合编码.jpg)
 
 ---
+### 5️⃣ 其他亮点功能
+
+**自动上屏：**  例如：三位、四位简码唯一时，自动上屏如`jjkw岌岌可危` `zmhu怎么回事` 。默认未开启，方案文件中`speller:`字段下取消注释这两句开启 `#  auto_select: true  #  auto_select_pattern: ^[a-z]+/|^[a-df-zA-DF-Z]\w{3}|^e\w{4}`
+
+**数字后自动半角：** 当中文状态输入数字的时候后面立即输入,。将自动转换为数字分割符，例如科学记数法1000,000 小数点 3.1415,如果你加入冒号:还可以优雅的输入时间12:30，当然你还可以双击输入的符号恢复全角符号的输出。但若你完全没有场景使用该功能，则可以通过patch，将其修改为commit  
+```punctuator/digit_separators: ",."  >  punctuator/digit_separators: commit```
+
+**错音错字提示：**  例如：输入`gei yu给予`，获得`jǐ yǔ`提示，此功能与全拼、双拼类型无关全部支持；
+
+<img src="https://storage.deepin.org/thread/202509260127525844_错音给予.jpg" height="80">      <img src="https://storage.deepin.org/thread/202509260127524705_错音崩溃.jpg" height="80">
 
 ## 🎓 进阶配置
 
-### Custom Patch 个性化
+**用户词删除：** 使用Ctrl+del是rime系统删除用户词,就可以将用户词标记为c<=0，这在rime系统中就表现为不使用，假性删除。
+
+**输入模式切换Lua：** 使用Ctrl+q来进行中文候选词、英文候选词、混合候选词之间切换，默认为混合编码输入模式。  
+
+### 1️⃣ Custom Patch 个性化
 
 ⚠️ **重要**：
 - Custom文件生效位置：**用户目录根目录**（与schema同级）
@@ -461,6 +498,207 @@ patch:
 ```
 
 > 💡 详细配置方法见方案文件 `custom/` 目录下的教程
+
+### 2️⃣ 自定义短语
+
+### 3️⃣ 词库迁移同步
+
+万象提供了多设备用户词同步功能，让你在不同设备间保持一致的输入体验。
+
+#### 基础配置
+
+<details>
+<summary>📱 单设备用户词编辑</summary>
+
+**适用场景**：只有一个设备，想手动编辑用户词
+
+**操作步骤**：
+
+1. 点击"同步用户数据"，生成 `用户目录/sync/设备名/wanxiang.userdb.txt`
+2. 使用工具将词库转换为万象格式（声调+辅助码）
+3. 编辑txt文件，保持格式一致
+4. 重新点击同步，导入数据库
+
+> 💡 **格式要求**：
+> - `db_name` 必须与用户词典文件名一致
+> - `user_id` = 设备文件夹名 = `installation_id` 字段必须保持一致
+
+</details>
+
+#### 用户词库迁移
+
+<details>
+<summary>⚙️ 同步配置详解</summary>
+
+**前置知识**: 同步是将用户词按时序合并导入导出的本地操作。
+
+**同步目录配置**
+
+默认同步目录为 `用户目录/sync`，如需自定义，在 `installation.yaml` 中添加：
+
+```yaml
+# Linux/Mac/Android
+sync_dir: "/home/amz/sync"
+
+# Windows (双引号)
+sync_dir: "D:\\home\\amz\\sync"
+
+# Windows (单引号)
+sync_dir: 'D:\home\amz\sync'
+```
+
+**设备ID配置**
+
+修改 `installation_id` 为可辨识的设备名称(建议按系统命名):
+
+```yaml
+installation_id: "windows"  # 或 "linux"、"mac"、"ios" 等
+```
+
+根据 `installation_id` 创建设备文件夹:
+
+```
+用户目录/sync/windows
+用户目录/sync/linux
+用户目录/sync/ios
+```
+
+**同步文件说明**
+
+点击"同步用户数据"后,系统将用户词库导出为txt文件:
+
+| 数据库文件 | 同步文件名(标准版) | 同步文件名(PRO版) |
+|-----------|------------------|-----------------|
+| `wanxiang.userdb` | `wanxiang.userdb.txt` | - |
+| `zc.userdb` | - | `zc.userdb.txt` |
+
+txt文件表头格式:
+
+```
+# Rime user dictionary
+#@/db_name	zc
+#@/db_type	userdb
+#@/rime_version	1.13.1
+#@/tick	793
+#@/user_id	ff9b2823-8733-44bb-a497-daf382b74ca5
+```
+
+**关键要求**:
+- `db_name` 必须与用户词典文件名一致
+- `user_id` = 设备文件夹名 = `installation_id` 三者必须保持一致
+
+</details>
+
+<details>
+<summary>🔄 多设备词库同步流程</summary>
+
+**步骤1：配置设备ID**
+
+打开用户目录的 `installation.yaml` 文件，修改 `installation_id` 为设备名称：
+
+```yaml
+installation_id: "windows"  # 或 "linux"、"mac"、"ios" 等
+```
+
+**步骤2：创建设备清单**
+
+在 `/sync` 目录中创建 `sequence_device_list.txt`：
+
+```
+sequence_windows.txt
+sequence_linux.txt
+sequence_ios.txt
+```
+
+**步骤3：同步合并逻辑**
+
+重新部署后，系统会自动：
+
+1. **导出**：将当前设备数据导出到 `sequence_设备id.txt`
+2. **合并**：读取清单中的所有文件，按时序去重合并
+3. **回写**：将合并结果回写到当前设备的sequence文件
+4. **导入**：将合并后的数据导入数据库
+
+**步骤4：云同步**
+
+1. 通过云同步软件（如坚果云、Dropbox）同步 `/sync` 目录
+2. 在其他设备上，更新 `sequence_device_list.txt` 添加对应设备文件
+3. 重新部署，完成多端数据合并
+
+</details>
+
+<details>
+<summary>📝 单设备编辑与模拟同步</summary>
+
+**单设备用户词编辑**
+
+如果只有一个设备,可以直接编辑用户词:
+
+1. 点击"同步用户数据",生成 `用户目录/sync/设备名/wanxiang.userdb.txt`
+2. 删除用户目录的 `userdb` (避免冲突)
+3. 使用工具将词库转换为万象格式(声调+辅助码)
+4. 编辑txt文件,确保格式与万象编码完全一致
+5. 点击同步,导入数据库
+
+**格式要求**:
+- 编辑的txt文件必须经过预处理
+- 必须保持万象编码格式(声调+辅助码)
+- `db_name`、`user_id` 等字段必须符合规范
+
+**模拟多设备同步**
+
+如果想测试多设备同步逻辑:
+
+1. 将编辑好的txt文件内的 `user_id` 修改为其他设备名(如 `linux`)
+2. 将文件放入 `用户目录/sync/linux/` 目录
+3. 点击同步,系统会将其与当前设备数据合并
+
+> 💡 **提示**：此功能可用于数据迁移和备份，也是真正的多设备同步逻辑的模拟。
+
+</details>
+
+#### ⚠️ 重要注意事项
+
+- **同步目录**：只同步 `/sync` 目录，**不要**将整个rime文件夹放入同步软件，会导致数据库锁定
+- **文件格式**：编辑用户词txt时必须保持万象编码格式（声调+辅助码）
+- **设备ID一致性**：确保 `installation_id`、设备文件夹名、`user_id` 三者完全一致
+- **可靠性说明**：此流程模拟Rime同步方式，为多端数据合并过程，iPhone设备可能遇到更多问题
+
+#### 排序信息同步
+
+<details>
+<summary>📊 手动排序数据同步</summary>
+
+**功能说明**：万象的手动排序功能支持词典候选排序和动态Lua候选排序（如日期/时间格式），排序数据存储于 `lua/sequence.userdb`，可在多设备间同步。
+
+**同步方式**：排序信息的同步流程与用户词同步**完全一致**，只需复用上述配置：
+
+1. **复用设备ID配置**：`installation.yaml` 中的 `installation_id`（已配置）
+2. **复用设备清单**：`sequence_device_list.txt`（已创建）
+3. **自动合并同步**：重新部署时，排序数据会与用户词一同合并
+
+**数据文件说明**：
+
+| 数据类型 | 文件位置 | 同步文件名 |
+|---------|---------|-----------|
+| 用户词 | `wanxiang.userdb` | `wanxiang.userdb.txt` (标准版)<br>`zc.userdb.txt` (PRO版) |
+| 排序信息 | `lua/sequence.userdb` | `sequence_设备id.txt` |
+
+**快捷键回顾**：
+- `Ctrl+J` - 向左一步
+- `Ctrl+K` - 向右一步
+- `Ctrl+L` - 移除排序信息
+- `Ctrl+P` - 置顶选中候选
+
+> 💡 **提示**：排序信息同步无需额外配置，完成用户词同步配置后自动生效。每次点击"同步用户数据"时，排序信息会与用户词一同导出/导入。
+
+</details>
+
+#### 相关工具
+
+- [用于Linux Mac的词库刷拼音辅助码工具](https://github.com/amzxyz/RIME-LMDG/releases/download/tools/wanxiang-dicts-tools-linux-mac)
+
+- [用于Windows的词库刷拼音辅助码工具](https://github.com/amzxyz/RIME-LMDG/releases/download/tools/wanxiang-tools.exe)
 
 ### 辅助码切换指令
 
@@ -529,18 +767,10 @@ wanxiang_lookup:
 <details>
 <summary>❓ PRO版为什么默认关闭调频？</summary>
 
-**原因**：
-- 保持词库纯净可控
-- 避免异常词汇和生僻字自动记录
-- 用户通过 `` 引导手动造词，更具可控性
-- 适合追求精准的专业用户
+[为什么PRO版本默认关闭调频的说明](https://github.com/amzxyz/RIME-LMDG/wiki/%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%85%B3%E9%97%AD%E8%B0%83%E9%A2%91%E4%BB%A5%E5%8F%8A%E4%B8%8E%E4%B9%8B%E5%85%B3%E8%81%94%E7%9A%84%E6%8E%AA%E6%96%BD%E6%9C%89%E5%93%AA%E4%BA%9B)   
 
-**开启方法**：
-```yaml
-# wanxiang_pro.custom.yaml
-patch:
-  engine/translators/@7/enable_user_dict: true
-```
+```enable_user_dict: false # 是否开启自动调频，true为开启```
+
 </details>
 
 <details>
@@ -571,16 +801,8 @@ patch:
 </details>
 
 <details>
-<summary>❓ 如何同步多设备用户词？</summary>
+<summary>❓ 按键设置思考</summary>
 
-**方法**：
-1. 设置同步目录（默认 `用户目录/sync`）
-2. 修改 `installation_id` 为设备名称
-3. 创建设备清单 `sequence_device_list.txt`
-4. 点击"同步用户数据"
-5. 通过云同步同步 `sync` 目录
-
-⚠️ **不要**将整个rime文件夹放入同步软件，会导致数据库锁定
 </details>
 
 <details>
@@ -602,6 +824,7 @@ patch:
 - [🚀 新手安装配置指南](https://docs.qq.com/doc/DQ0FqSXBmYVpWVFpy?rtkey=)
 - [词库问题收集反馈表](https://docs.qq.com/smartsheet/DWHZsdnZZaGh5bWJI?viewId=vUQPXH&tab=BB08J2)
 - [RIME-LMDG 词库与语言模型仓库](https://github.com/amzxyz/RIME-LMDG)
+- [思维导图快速配置查询](https://github.com/amzxyz/rime_wanxiang/blob/wanxiang/custom/%E4%B8%87%E8%B1%A1%E8%BE%93%E5%85%A5%E6%96%B9%E6%A1%88.png)
 
 ### 友情链接
 - [Oh My Rime](https://www.mintimate.cc/zh/guide/installRime.html) - Rime基础入门
@@ -656,14 +879,3 @@ patch:
 
 <img alt="pay" src="./custom/赞赏.jpg" height="312" width="446">
 
----
-
-<div align="center">
-
-**⭐ 如果这个项目对你有帮助，请给一个Star支持一下！**
-
-**感谢网友的热情提报问题，使得模型和词库体验进一步提升**
-
-Made with ❤️ by [AMZ](https://github.com/amzxyz)
-
-</div>
