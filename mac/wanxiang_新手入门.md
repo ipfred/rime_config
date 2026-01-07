@@ -9,6 +9,10 @@
 
 ---
 
+## 📁项目地址
+
+[⌨️Rime万象输入方案](https://github.com/amzxyz/rime_wanxiang)
+
 ## ✨ 核心亮点
 
 ### 🎯 为什么选择万象？
