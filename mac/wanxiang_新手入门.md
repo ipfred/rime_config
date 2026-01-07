@@ -244,7 +244,9 @@ bash rime-install amzxyz/rime_wanxiang@wanxiang-shouyou-fuzhu:plum/dicts
 - `,` - 上屏Tips内容
 
 ⚠️ **注意**：仓输入法、超越输入法需交由rime处理，设置中关闭前端接管
-输入文字 👉 tips 之间的映射关系 参考配置文件 `lua\tips\tips_show.txt`
+
+- 文字和超级提示的映射关系  参考配置文件 `lua\tips\tips_show.txt`
+- 如果默认的tips_show.txt 满足不了你，也可以建立自己的配置文件 `lua\tips\tips_user.txt`(格式和上面文件一致)
 
 </details>
 
@@ -500,6 +502,8 @@ patch:
 > 💡 详细配置方法见方案文件 `custom/` 目录下的教程
 
 ### 2️⃣ 自定义短语
+
+万象的自定义短语文件名称默认为 `custom_phrase.txt`，参考文件里的配置示例
 
 ### 3️⃣ 词库迁移同步
 
@@ -866,16 +870,6 @@ wanxiang_lookup:
 - **深度讨论**：[Ask DeepWiki](https://deepwiki.com/amzxyz/rime_wanxiang)
 - **词库反馈**：[在线表单](https://docs.qq.com/smartsheet/DWHZsdnZZaGh5bWJI?viewId=vUQPXH&tab=BB08J2)
 
----
 
-## ❤️鸣谢
 
-- 感谢网友的热情提报问题，使得模型和词库体验进一步提升。
----
-
-## ☕ 赞赏支持
-
-如果觉得项目好用，可以请AMZ喝咖啡
-
-<img alt="pay" src="./custom/赞赏.jpg" height="312" width="446">
-
+## 🤝文档有问题和疑惑，欢迎指正
